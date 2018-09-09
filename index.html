@@ -1,0 +1,107 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui/jquery-ui.css">
+	<script type="text/javascript", src="scripts/jquery.js"></script>
+	<script type="text/javascript", src="scripts/jquery-ui.js"></script>
+	<script type="text/javascript", src="scripts/numbers.js"></script>
+	<style type="text/css">
+		label {
+	     	color: #B4886B;
+	      	font-weight: bold;
+		    display: block;
+			width: 150px;
+			float: left;
+    	}
+
+    	#calcres {
+            text-align: left;
+            font-weight: bold;
+            font-size: 32;
+            color: red;
+            background: yellow;
+        }
+	</style>
+</head>
+
+<script type="text/javascript">
+	var calc_ext_rot = function(maj_ax, min_ax, rot_angle_deg) {
+		var convrad = function(deg) {
+			return Math.PI*(deg/180);
+		}
+		var integrand2 = function(x) {
+			return Math.sqrt( (Math.pow(min_ax/2,2)*Math.pow(Math.sin(x),2)) + (Math.pow(maj_ax/2,2)*Math.pow(Math.cos(x),2)) );
+		}
+		var rot_angle_rad = convrad(rot_angle_deg);
+		var ul2 = Math.atan( (min_ax/maj_ax)*Math.tan(rot_angle_rad) );
+		var res = numbers.calculus.Riemann(integrand2, 0, ul2, 2000);
+		return Number(Math.round(res+'e'+1)+'e-'+1);
+	};
+
+	$( function() {
+		var min_ax_spinner = $( "#min_ax_spinner" ).spinner({
+			min : 0,
+			number_format : "n"
+		});
+		var maj_ax_spinner = $( "#maj_ax_spinner" ).spinner({
+			min : 0,
+			number_format : "n"
+		});
+		var rot_angle_spinner = $( "#rot_angle_spinner" ).spinner({
+			min : 0,
+			number_format : "n"
+		});
+
+		$( "#getvalue" ).on( "click", function() {
+			var min_ax = min_ax_spinner.spinner( "value" );
+			var maj_ax = maj_ax_spinner.spinner( "value" );
+			var rot_angle = rot_angle_spinner.spinner( "value" );
+			var arc_length = calc_ext_rot(maj_ax, min_ax, rot_angle);
+			document.getElementById("calcres").innerHTML = arc_length;
+		});
+
+		$( "button" ).button();
+	});
+</script>
+
+<body>
+	<div>
+		<h1>Elliptical Arc Length Calculator For External Rotational Deformity Correction</h1>
+	</div>
+	<div>
+		<p>
+			<h2>Utility to calculate the arc length of an ellipse given the following:</h2>
+			<h3>- Length of the minor axis</h3>
+			<h3>- Length of the major axis</h3>
+			<h3>- Desired rotational correction in degrees</h3>
+			<h4>Note:</h4> The rotation is assumed to start from the minor axis (yellow line) to the major axis (purple line).
+		</p>
+	</div>
+	<div>
+		<img src="images/ellipse_min_maj.png" style="width:100%">
+	</div>
+
+	<p>
+		<label for="min_ax_spinner">Ellipse minor axis length:</label>
+		<input id="min_ax_spinner" name="value">
+	</p>
+	<p>
+		<label for="maj_ax_spinner">Ellipse major axis length:</label>
+		<input id="maj_ax_spinner" name="value">
+	</p>
+	<p>
+		<label for="rot_angle_spinner">Desired rotation angle (degrees):</label>
+		<input id="rot_angle_spinner" name="value">
+	</p>
+	<p>
+		<button id="getvalue">Calculate arc length</button>
+	</p>
+	<p id="calcres"></p>
+</body>
+
+<footer>
+  <p>Developed by: Dr. Sangeet Gangadharan and Surre Markandaya</p>
+  <p>License: MIT License</p>
+  <p>Copyright: Dr. Sangeet Gangadharan and Surre Markandaya</p>
+  <p>
+      Uses: <a href="https://github.com/numbers/numbers.js">numbers.js</a> and <a href="http://jqueryui.com/">jquery-ui</a>
+  </p>
+</footer>
