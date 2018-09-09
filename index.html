@@ -13,10 +13,10 @@
     	}
 
     	#calcres {
-            text-align: left;
+            text-align: center;
             font-weight: bold;
             font-size: 32;
-            color: red;
+            color: black;
             background: yellow;
         }
 	</style>
@@ -33,7 +33,7 @@
 		var rot_angle_rad = convrad(rot_angle_deg);
 		var ul2 = Math.atan( (min_ax/maj_ax)*Math.tan(rot_angle_rad) );
 		var res = numbers.calculus.Riemann(integrand2, 0, ul2, 2000);
-		return Number(Math.round(res+'e'+1)+'e-'+1);
+		return Number(Math.round(res+'e'+1)+'e-'+1) + " mm";
 	};
 
 	$( function() {
@@ -69,8 +69,8 @@
 	<div>
 		<p>
 			<h2>Utility to calculate the arc length of an ellipse given the following:</h2>
-			<h3>- Length of the minor axis</h3>
-			<h3>- Length of the major axis</h3>
+			<h3>- Length of the minor axis (mm) </h3>
+			<h3>- Length of the major axis (mm) </h3>
 			<h3>- Desired rotational correction in degrees</h3>
 			<h4>Note:</h4> The rotation is assumed to start from the minor axis (yellow line) to the major axis (purple line).
 		</p>
@@ -80,11 +80,11 @@
 	</div>
 
 	<p>
-		<label for="min_ax_spinner">Ellipse minor axis length:</label>
+		<label for="min_ax_spinner">Ellipse minor axis length (mm):</label>
 		<input id="min_ax_spinner" name="value">
 	</p>
 	<p>
-		<label for="maj_ax_spinner">Ellipse major axis length:</label>
+		<label for="maj_ax_spinner">Ellipse major axis length (mm):</label>
 		<input id="maj_ax_spinner" name="value">
 	</p>
 	<p>
@@ -98,9 +98,9 @@
 </body>
 
 <footer>
-  <p>Developed by: Dr. Sangeet Gangadharan and Surre Markandaya</p>
+  <p>Developed by: Surre Markandaya and Dr. Sangeet Gangadharan</p>
   <p>License: MIT License</p>
-  <p>Copyright: Dr. Sangeet Gangadharan and Surre Markandaya</p>
+  <p>Copyright: Surre Markandaya and Dr. Sangeet Gangadharan</p>
   <p>
       Uses: <a href="https://github.com/numbers/numbers.js">numbers.js</a> and <a href="http://jqueryui.com/">jquery-ui</a>
   </p>
