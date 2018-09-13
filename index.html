@@ -1,4 +1,7 @@
+<html>
 <head>
+	<title>Elliptical Arc Length Calculator For Derotation Osteotomy</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui/jquery-ui.css">
 	<script type="text/javascript", src="scripts/jquery.js"></script>
 	<script type="text/javascript", src="scripts/jquery-ui.js"></script>
@@ -13,7 +16,7 @@
     	}
 
     	#calcres {
-            text-align: center;
+            text-align: left;
             font-weight: bold;
             font-size: 32;
             color: black;
@@ -64,7 +67,7 @@
 
 <body>
 	<div>
-		<h1>Elliptical Arc Length Calculator For External Rotational Deformity Correction</h1>
+		<h1>Elliptical Arc Length Calculator For Derotation Osteotomy</h1>
 	</div>
 	<div>
 		<p>
@@ -72,12 +75,26 @@
 			<h3>- Length of the minor axis (mm) </h3>
 			<h3>- Length of the major axis (mm) </h3>
 			<h3>- Desired rotational correction in degrees</h3>
-			<h4>Note:</h4> The rotation is assumed to start from the minor axis (yellow line) to the major axis (purple line).
+			<h4>Note:</h4> <em>The rotation is assumed to start from the minor axis (yellow line) to the major axis (purple line).</em>
 		</p>
 	</div>
 	<div>
 		<img src="images/ellipse_min_maj.png" style="width:100%">
 	</div>
+	<p>
+    <table>
+      <tr> <th> Steps for Femoral Derotation Osteotomy <th> </tr>
+      <tr> <td> Mark osteotomy level </td> </tr>
+      <tr> <td> Measure minimum Antero-posterior width (minor axis) </td> </tr>
+      <tr> <td> Etch longitudinal line over anterior point of AP measurement </td> </tr>
+      <tr> <td> Measure medio-lateral width (major axis), perpendicular to AP width </td> </tr>
+      <tr> <td> Enter both measurements and desired angle of correction in the input fields below   </td> </tr>
+      <tr> <td>  Click on <em> Calculate arc length </em> and get the calculated arc length  </td> </tr>
+      <tr> <td> Rotationally displace bony fragments by the arc length, medially or laterally </td> </tr>
+      <tr> <td> Fix osteotomy with implant </td> </tr>
+      <tr> <td> (In all cases, the shorter measure should be entered as minor axis) </td> </tr>
+    </table>
+	</p>
 
 	<p>
 		<label for="min_ax_spinner">Ellipse minor axis length (mm):</label>
@@ -105,3 +122,4 @@
       Uses: <a href="https://github.com/numbers/numbers.js">numbers.js</a> and <a href="http://jqueryui.com/">jquery-ui</a>
   </p>
 </footer>
+</html>
